@@ -6,19 +6,20 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
     string str;
-    int parity = 0;
+    bool parity = true;
     while (getline(cin, str)) {
         string s = "";
         for (int i = 0; i < str.length(); ++i) {
-            if (str[i] != '"') {
-                s += str[i];
-            } else if (parity == 0) {
+            if (str[i] == '"' && parity) {
                 s += "``";
-                parity = 1;
-            } else {
+                parity = false;
+                continue;
+            } else if (str[i] == '"' && !parity) {
                 s += "''";
-                parity = 0;
+                parity = true;
+                continue;
             }
+            s += str[i];
         }
         cout << s << '\n';
     }
