@@ -27,7 +27,7 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
     int n;
-    while(cin >> n) {
+    while (cin >> n) {
         solve(n);
     }
     return 0;
