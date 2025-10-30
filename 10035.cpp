@@ -3,12 +3,18 @@
 using namespace std;
 
 int solve(int a, int b) {
-    string s1, s2;
-    s1 = to_string(a);
-    s2 = to_string(b);
-    if (s1.length() > s2.length()) {
-        int diff = s1.length()
+    int carry = 0, res = 0;
+    while (a > 0 || b > 0) {
+        int sum = a % 10 + b % 10 + carry;
+        if (sum >= 10) {
+            res += 1;
+            carry = 1;
+        } else {
+            carry = 0;
+        }
+        a /= 10; b /= 10;
     }
+    return res;
 }
 
 int main() {
