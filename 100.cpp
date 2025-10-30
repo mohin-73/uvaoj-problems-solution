@@ -5,7 +5,6 @@ using namespace std;
 unordered_map<int, int> memo;
 
 int solve(int i, int j) {
-    if (i > j) swap(i, j);
     int result = 0;
     while (j >= i) {
         if ((memo.find(i) != memo.end())) {
@@ -30,7 +29,7 @@ int main() {
     cin.tie(nullptr);
     int i, j;
     while (cin >> i >> j) {
-        int mcl = solve(i, j);
+        int mcl = solve(min(i, j), max(i, j));
         cout << i << ' ' << j << ' ' << mcl << '\n';
     }
     return 0;
